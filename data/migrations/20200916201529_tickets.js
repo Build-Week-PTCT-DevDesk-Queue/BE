@@ -1,7 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('tickets', table => {
       table.increments();
-      table.timestamp(true, true);
+      table.timestamps(true, true);
       table.integer('user-id');
       table.integer('helper-id');
       table.string('title', 255).notNullable();
