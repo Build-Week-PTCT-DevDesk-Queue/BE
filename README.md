@@ -52,7 +52,7 @@ GETs all tickets with the associated user_id param
 GETs all tickets with the associated helper_id param
 
 ### POST '/api/tickets/create'
-CREATEs ticket  
+CREATEs a ticket  
 The request body must have the following:
 
 ```
