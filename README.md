@@ -75,7 +75,7 @@ The request body must have the following:
 
 ```
 {
-    status: 1
+    "status": 1
 }
 ```
 
