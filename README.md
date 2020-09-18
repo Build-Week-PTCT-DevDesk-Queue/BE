@@ -38,7 +38,7 @@ Request body must include a valid username and password.
  ```
 
 # Tickets
-Ticket objects will look like the folllowing:
+Ticket objects will look like the following:
 
 ```
 {
@@ -58,7 +58,7 @@ Ticket objects will look like the folllowing:
 ## Ticket Endpoints
 
 ### GET '/api/tickets
-GETs all tickets who's helper_id is null && status 0
+GETs all tickets
 
 ### GET '/api/tickets/:ticket_id'
 GETs a ticket with the associated ticket_id param
