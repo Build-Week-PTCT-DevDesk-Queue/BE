@@ -37,7 +37,7 @@ Request body must include a valid username and password.
 
  ```
 
-# Ticket Endpoints
+## Ticket Endpoints
 
 ### GET '/api/tickets
 GETs all tickets who's helper_id is null && status 0
