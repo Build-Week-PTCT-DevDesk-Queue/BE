@@ -46,9 +46,9 @@ Ticket objects will look like the folllowing:
     "created_at": "2020-09-18 03:13:25",
     "updated_at": "2020-09-18 03:13:25",
     "user_id": 1,
-    "helper_id": 1,
+    "helper_id": null,
     "title": "I need some help with this",
-    "description": "This is just so hard my brain my explode, like, KABOOM!",
+    "description": "This is just so hard my brain may explode, like, KABOOM!",
     "tried": "Literally everything",
     "category": "Category",
     "status": 0
