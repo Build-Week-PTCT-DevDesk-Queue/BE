@@ -2,6 +2,7 @@ const db = require('../../data/config')
 
 function get() {
     return db('tickets')
+        .where('status', 0)
 }
 
 async function create(ticket) {
