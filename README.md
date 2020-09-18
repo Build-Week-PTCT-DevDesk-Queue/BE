@@ -52,7 +52,8 @@ GETs all tickets with the associated user_id param
 GETs all tickets with the associated helper_id param
 
 ### POST '/api/tickets/create'
-CREATEs ticket
+CREATEs ticket  
+The request body must have the following:
 
 ```
 {
@@ -69,7 +70,8 @@ UPDATEs a ticket's associated helper_id
 If you pass 0 as the helper_id, the helper_id will return to null
 
 ### PUT '/api/tickets/:ticket_id/status'
-UPDATEs the status of a ticket with the associated ticket_id param 
+UPDATEs the status of a ticket with the associated ticket_id param  
+The request body must have the following:
 
 ```
 {
