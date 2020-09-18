@@ -58,7 +58,7 @@ Ticket objects will look like the following:
 ## Ticket Endpoints
 
 ### GET '/api/tickets
-GETs all tickets
+GETs all tickets with helper_id null && status 0
 
 ### GET '/api/tickets/:ticket_id'
 GETs a ticket with the associated ticket_id param
