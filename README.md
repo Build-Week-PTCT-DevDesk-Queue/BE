@@ -37,6 +37,45 @@ Request body must include a valid username and password.
 
  ```
 
+# Ticket Endpoints
+
+### GET '/api/tickets
+GETs all tickets who's helper_id is null && status 0
+
+### GET '/api/tickets/:ticket_id'
+GETs a ticket with the associated ticket_id param
+
+### GET '/api/tickets/user_id/:user_id
+GETs all tickets with the associated user_id param
+
+### GET '/api/tickets/helper_id/:helper_id
+GETs all tickets with the associated helper_id param
+
+### POST '/api/tickets/create'
+CREATEs ticket
+
+```
+{
+	"user_id": "1",
+	"title": "I need some help with this",
+	"description": "This is just so hard my brain may explode, like, KABOOM!",
+	"tried": "Literally everything",
+	"category": "Emergency"
+}
+```
+
+### PUT '/api/tickets/:ticket_id/helper/:helper_id'
+UPDATEs a ticket's associated helper_id
+If you pass 0 as the helper_id, the helper_id will return to null
+
+### PUT '/api/tickets/:ticket_id/status'
+UPDATEs the status of a ticket with the associated ticket_id param 
+
+```
+{
+    status: 1
+}
+```
 
 # Error Codes
 401 - Invalid credentials
