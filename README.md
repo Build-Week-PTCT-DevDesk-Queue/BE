@@ -10,8 +10,8 @@ A helper can add a ticket to their queue, mark the ticket as resolved, or send t
 # Authentication
 A token is sent to the client using JSON web tokens. The front-end can save the token locally to persist login information. 
 
-##Authentication Endpoints
-###POST '/api/auth/register'
+## Authentication Endpoints
+### POST '/api/auth/register'
 Creates a new user. 
 Request body must include a username, password and role. 
 Username must be unique, role must be either 'student', 'helper', or 'both'.  
@@ -25,7 +25,7 @@ Username must be unique, role must be either 'student', 'helper', or 'both'.
 
  ```
 
-###POST 'api/auth/login'
+### POST 'api/auth/login'
 Allows an existing user to log in. 
 Request body must include a valid username and password.
 
