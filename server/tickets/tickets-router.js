@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const Tickets = require('./tickets-model')
+const restrict = require('../../middleware/restrict')
 
-router.get('/', async (req,res,next) => {
+router.get('/', restrict(), async (req,res,next) => {
     try {
         const tickets = await Tickets.get()
         res.json(tickets)
@@ -11,7 +12,7 @@ router.get('/', async (req,res,next) => {
     }
 })
 
-router.get('/:id', async (req,res,next) => {
+router.get('/:id', restrict(), async (req,res,next) => {
     try {
         const ticket = await Tickets.getById(req.params.id)
         res.json(ticket)
@@ -20,10 +21,10 @@ router.get('/:id', async (req,res,next) => {
     }
 })
 
-router.get('/:filter/:id', async (req,res,next) => {
+router.get('/:filter_by/:filter', restrict(), async (req,res,next) => {
     try {
         const tickets = await Tickets.getBy({
-            [req.params.filter]: req.params.id
+            [req.params.filter_by]: req.params.filter
         })
         res.json(tickets)
     } catch(err) {
@@ -31,7 +32,7 @@ router.get('/:filter/:id', async (req,res,next) => {
     }
 })
 
-router.post('/create', async (req,res,next) => {
+router.post('/create', restrict(), async (req,res,next) => {
     try {
         const ticket = await Tickets.create({
             user_id: req.body.user_id,
@@ -46,19 +47,24 @@ router.post('/create', async (req,res,next) => {
     }
 })
 
-router.put('/:id/helper/:helper_id', async (req,res,next) => {
-    const { id, helper_id } = req.params
+router.put('/:id/helper/:helper_id', restrict(), async (req,res,next) => {
     try {
-        const ticket = await Tickets.addHelper(id, helper_id)
+        const ticket = await Tickets.addHelper(
+            req.params.id, 
+            req.params.helper_id
+        )
         res.json(ticket)
     } catch(err) {
         next(err)
     }
 })
 
-router.put('/:id/status', async (req,res,next) => {
+router.put('/:id/status', restrict(), async (req,res,next) => {
     try {
-        const ticket = await Tickets.updateStatus(req.params.id, req.body.status)
+        const ticket = await Tickets.updateStatus(
+            req.params.id, 
+            req.body.status
+        )
         res.json(ticket)
     } catch(err) {
         next(err)
