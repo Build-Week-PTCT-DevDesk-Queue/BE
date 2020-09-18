@@ -37,10 +37,28 @@ Request body must include a valid username and password.
 
  ```
 
+# Tickets
+Ticket objects will look like the following:
+
+```
+{
+    "id": 1,
+    "created_at": "2020-09-18 03:13:25",
+    "updated_at": "2020-09-18 03:13:25",
+    "user_id": 1,
+    "helper_id": null,
+    "title": "I need some help with this",
+    "description": "This is just so hard my brain may explode, like, KABOOM!",
+    "tried": "Literally everything",
+    "category": "Category",
+    "status": 0
+  }
+```
+
 ## Ticket Endpoints
 
 ### GET '/api/tickets
-GETs all tickets who's helper_id is null && status 0
+GETs all tickets
 
 ### GET '/api/tickets/:ticket_id'
 GETs a ticket with the associated ticket_id param
