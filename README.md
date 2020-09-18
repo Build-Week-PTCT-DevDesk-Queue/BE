@@ -65,7 +65,7 @@ CREATEs ticket
 ```
 
 ### PUT '/api/tickets/:ticket_id/helper/:helper_id'
-UPDATEs a ticket's associated helper_id
+UPDATEs a ticket's associated helper_id\n
 If you pass 0 as the helper_id, the helper_id will return to null
 
 ### PUT '/api/tickets/:ticket_id/status'
