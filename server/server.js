@@ -13,7 +13,11 @@ server.use(express.json());
 server.use(cookieParser());
 
 server.use('/api/auth', userRouter);
-server.use('/api/tickets', ticketsRouter)
+server.use('/api/tickets', ticketsRouter);
+
+server.get('/', (req, res) => {
+    res.send('<h1>DevDesk</h1>');
+})
 
 server.use((err, req, res, next) => {
     console.log(err);
