@@ -80,6 +80,6 @@ The request body must have the following:
 ```
 
 # Error Codes
-401 - Invalid credentials
-404 - Resource not found
+401 - Invalid credentials  
+404 - Resource not found  
 500 - Server error - see console for details
