@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const users = require('./users-model');
 const validateUser = require('../../middleware/validateUser');
+const jwt = require('jsonwebtoken');
 
 router.post('/register', validateUser, async (req, res, next) => {
    try { 
@@ -39,6 +40,15 @@ router.post('/login', validateUser, async (req, res, next) => {
             res.status(401).json({message: 'Invalid password.'});
         };
 
+        const token = jwt.sign({
+            user_id: user.id,
+            role: user.role,
+        }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRES_IN,
+        });
+
+        res.cookie('token', token);
+
         res.status(200).json(`Welcome, ${user.username}!`);
 
     } catch (err) {
@@ -46,7 +56,7 @@ router.post('/login', validateUser, async (req, res, next) => {
     }
 });
 
-// router.get("/logout", authenticate, async (req, res, next) => {
+// router.get("/logout", async (req, res, next) => {
 // 	try {
 // 		req.session.destroy((err) => {
 // 			if (err) {
