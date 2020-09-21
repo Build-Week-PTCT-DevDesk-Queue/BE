@@ -15,7 +15,7 @@ router.post('/register', validateUser, async (req, res, next) => {
 
     const newUser = await users.add({
         username,
-        password: await bcrypt.hash(password, 16),
+        password: await bcrypt.hash(password, 8),
         role
     });
 
