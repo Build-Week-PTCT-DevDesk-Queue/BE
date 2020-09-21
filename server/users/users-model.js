@@ -17,7 +17,7 @@ function findBy(filter){
 };
 
 function add(user){
-    return db('users').insert(user);
+    return db('users').insert(user).returning('*').toString();
 };
 
 module.exports = {
