@@ -6,9 +6,11 @@ function get() {
         .where('helper_id', null)
 }
 
-async function create(ticket) {
-    const [id] = await db('tickets').insert(ticket)
-    return getById(id)
+function create(ticket) {
+    return db('tickets')
+        .insert(ticket)
+        .returning(['*'])
+    
 }
 
 function getById(id) {
@@ -18,7 +20,7 @@ function getById(id) {
 }
 
 async function addHelper(id, helper_id) {
-    if (id === 0) {
+    if (helper_id === '0') {
         await db('tickets')
             .update('helper_id', null)
             .where('id', id)
