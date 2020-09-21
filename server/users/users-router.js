@@ -13,7 +13,7 @@ router.post('/register', validateUser, async (req, res, next) => {
         return res.status(409).json({message: 'Username already exists.'});
     }
 
-    const newUser = await users.add({
+    const [newUser] = await users.add({
         username,
         password: await bcrypt.hash(password, 16),
         role
@@ -44,7 +44,7 @@ router.post('/login', validateUser, async (req, res, next) => {
             user_id: user.id,
             role: user.role,
         }, process.env.JWT_SECRET, {
-            expiresIn: process.env.JWT_EXPIRES_IN,
+            expiresIn: parseInt(process.env.JWT_EXPIRES_IN),
         });
 
         res.cookie('token', token);
