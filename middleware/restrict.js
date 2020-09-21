@@ -15,6 +15,7 @@ function restrict() {
 
             jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
                 if (err) {
+                    console.log(err)
                     return res.status(401).json(authError)
                 }
 
