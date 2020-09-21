@@ -15,7 +15,7 @@ router.post('/register', validateUser, async (req, res, next) => {
 
     const newUser = await users.add({
         username,
-        password: await bcrypt.hash(password, 8),
+        password: await bcrypt.hash(password, 16),
         role
     });
 
@@ -49,7 +49,11 @@ router.post('/login', validateUser, async (req, res, next) => {
 
         res.cookie('token', token);
 
-        res.status(200).json(`Welcome, ${user.username}!`);
+        res.status(200).json({
+            id: user.id,
+            username: user.username,
+            role: user.role
+        });
 
     } catch (err) {
         next(err);
