@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const users = require('./users-model');
 const validateUser = require('../../middleware/validateUser');
 const jwt = require('jsonwebtoken');
-const cors = require('cors')
 
 router.post('/register', validateUser, async (req, res, next) => {
    try { 
@@ -26,13 +25,7 @@ router.post('/register', validateUser, async (req, res, next) => {
     }
 });
 
-router.post('/login', cors({
-    origin: [
-      "http://localhost:3000"
-    ],
-    credentials: true,
-    exposedHeaders: ["set-cookie"],
-  }), validateUser, async (req, res, next) => {
+router.post('/login', validateUser, async (req, res, next) => {
     try {
         const {username, password} = req.body;
         const user = await users.findBy({username}).first();
