@@ -7,11 +7,17 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
+server.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://cors-anywhere.herokuapp.com/")
+    res.header('Vary', 'Origin')
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next();
+  });
+
 server.use(helmet());
 server.use(cors({
-    credentials: true,
-    origin: 'https://cors-anywhere.herokuapp.com/'
-}));
+    credentials: true
+}))
 server.use(express.json());
 server.use(cookieParser());
 
