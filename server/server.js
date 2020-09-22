@@ -7,19 +7,10 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'example.com');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-    next();
-}
-
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use(cookieParser());
-server.use(allowCrossDomain)
 
 server.use('/api/auth', userRouter);
 server.use('/api/tickets', ticketsRouter);
