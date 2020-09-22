@@ -9,7 +9,8 @@ const ticketsRouter = require('./tickets/tickets-router')
 
 server.use(helmet());
 server.use(cors({
-    credentials: true
+    credentials: true,
+    origin: 'https://cors-anywhere.herokuapp.com/'
 }));
 server.use(express.json());
 server.use(cookieParser());
