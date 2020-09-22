@@ -8,7 +8,9 @@ const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
 server.use(helmet());
-server.use(cors());
+server.use(cors({
+    origin: true
+}));
 server.use(express.json());
 server.use(cookieParser());
 
