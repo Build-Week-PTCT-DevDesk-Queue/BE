@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const server = express();
-const cors = require('cors');
+// const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./users/users-router');
@@ -15,9 +15,9 @@ server.use(function(req, res, next) {
   });
 
 server.use(helmet());
-server.use(cors({
-    credentials: true
-}))
+// server.use(cors({
+//     credentials: true
+// }))
 server.use(express.json());
 server.use(cookieParser());
 
