@@ -1,7 +1,5 @@
 
 exports.seed = async function(knex) {
-    // Deletes ALL existing entries
-    await knex('tickets').truncate()
     await knex('tickets').insert([
         {
           user_id: 1,
