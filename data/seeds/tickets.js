@@ -1,6 +1,6 @@
 
-exports.seed = async function(knex) {
-    await knex('tickets').truncate()
+exports.seed = function(knex) {
+    knex('tickets').truncate()
       .then()
         .insert([
           {
