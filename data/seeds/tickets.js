@@ -1,10 +1,8 @@
 
-exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('tickets').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('tickets').insert([
+exports.seed = async function(knex) {
+    // Deletes ALL existing entries
+    await knex('tickets').truncate()
+    await knex('tickets').insert([
         {
           user_id: 1,
           helper_id: null,
@@ -41,6 +39,5 @@ exports.seed = function(knex) {
           category: 'React',
           status: false
         },
-      ]);
-    });
-};
+    ])
+}
