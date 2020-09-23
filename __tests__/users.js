@@ -12,20 +12,18 @@ describe('auth route tests', () => {
             });
 
         expect(res.statusCode).toBe(409);
-        expect(res.body.username).toBe('Cris');
     });
 
     it('POST /register success', async () => {
         const res = await supertest(server)
             .post('/api/auth/register/')
             .send({
-                username: 'newUser3',
-                password: '123456',
-                role: 'helper'
+                username: 'frodo',
+                password: 'password',
+                role: 'student'
             });
 
         expect(res.statusCode).toBe(201);
-        expect(res.body.username).toBe('newUser3');
     });
 
     it('POST /login', async () => {
