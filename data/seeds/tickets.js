@@ -1,8 +1,8 @@
 
 exports.seed = function(knex) {
     knex('tickets').truncate()
-      .then()
-        .insert([
+      .then( function () {
+        return knex('tickets').insert([
           {
             user_id: 1,
             helper_id: null,
@@ -40,4 +40,5 @@ exports.seed = function(knex) {
             status: false
           },
       ])
+    })
 }
