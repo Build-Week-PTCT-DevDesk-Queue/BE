@@ -10,8 +10,7 @@ const ticketsRouter = require('./tickets/tickets-router')
 server.use(helmet());
 server.use(cors({
     origin: [
-        'http://localhost:3000',
-        'https://dev-desk-frontend.vercel.app/'
+        'http://localhost:3000'
     ],
     credentials: true
 }));
