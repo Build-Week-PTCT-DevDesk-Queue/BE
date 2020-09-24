@@ -10,13 +10,13 @@ function restrict() {
             const token = req.cookies.token
             
             if (!token) {
-                return res.status(401).json(authError)
+                return res.status(401).json({message: 'Cookie not found.'})
             }
 
             jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
                 if (err) {
                     console.log(err)
-                    return res.status(401).json(authError)
+                    return res.status(401).json({message: 'Cookie not verified'})
                 }
 
                 req.token = decoded
