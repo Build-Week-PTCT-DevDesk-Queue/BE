@@ -8,9 +8,10 @@ const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
 const corsOptions = {
-    origin: 'https://dev-desk-frontend.vercel.app/',
+    origin: 'https://dev-desk-frontend.vercel.app/*',
     optionsSuccessStatus: 200,
-    methods: 'GET, PUT, POST, DELETE'
+    methods: 'GET, PUT, POST, DELETE',
+    Access-Control-Allow-Origin: *
 };
 
 server.use(helmet());
