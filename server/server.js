@@ -9,18 +9,9 @@ const ticketsRouter = require('./tickets/tickets-router')
 
 server.use(helmet());
 server.use(cors({
-    origin: ['https://dev-desk-frontend.vercel.app/*'],
-    optionsSuccessStatus: 200,
-    methods: 'GET, PUT, POST, DELETE',
-    allowedHeaders: ['sessionId', 'Content-Type'],
-    preFlightContinue: false,
-    credentials: true,
-    allowedHeaders: '*'
+    origin: ['https://dev-desk-frontend.vercel.app', 'http://localhost:3000'],
+    credentials: true
 }));
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://dev-desk-frontend.vercel.app/*' || '*');
-    next();
-})
 server.use(express.json());
 server.use(cookieParser());
 
