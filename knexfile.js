@@ -3,13 +3,8 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    client: 'pg',
-    connection: {
-        host: process.env.DATABASE_URL,
-        user: 'postgres',
-        password: 'myWife87##',
-        database: 'dev-desk'
-    },
+    client: 'sqlite3',
+    connection: './data/dev-desk.db3',
     migrations: {
       directory: './data/migrations',
       tableName: 'dbmigrations',
