@@ -8,9 +8,12 @@ const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
 const corsOptions = {
-    origin: '*',
+    origin: ['http://localhost:3000', 'https://dev-desk-frontend.vercel.app/*'],
     optionsSuccessStatus: 200,
-    methods: 'GET, PUT, POST, DELETE'
+    methods: 'GET, PUT, POST, DELETE',
+    allowedHeaders: ['sessionId', 'Content-Type'],
+    preFlightContinue: false,
+    credentials: true
 };
 
 server.use(helmet());
