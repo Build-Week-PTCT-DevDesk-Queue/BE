@@ -6,25 +6,22 @@ function restrict() {
 			message: "You must be logged in",
 		}
 
-		try {
-            const token = req.cookies.token
+        const token = req.cookies.token || req.headers['authorization'];
             
             if (!token) {
-                return res.status(401).json({message: 'Cookie not found.'})
+                return res.status(401).json({message: 'Token not found.'})
             }
 
-            jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-                if (err) {
-                    console.log(err)
-                    return res.status(401).json({message: 'Cookie not verified'})
-                }
+		try {
 
-                req.token = decoded
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-                next()
-            })
+            req.user = decoded;
+
+            next();
+
 		} catch(err) {
-			next(err)
+			res.status(400).send('Invalid token.')
 		}
 	}
 }
