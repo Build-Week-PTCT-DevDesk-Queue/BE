@@ -7,17 +7,20 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./users/users-router');
 const ticketsRouter = require('./tickets/tickets-router')
 
-const corsOptions = {
+server.use(helmet());
+server.use(cors({
     origin: ['http://localhost:3000', 'https://dev-desk-frontend.vercel.app/*'],
     optionsSuccessStatus: 200,
     methods: 'GET, PUT, POST, DELETE',
     allowedHeaders: ['sessionId', 'Content-Type'],
     preFlightContinue: false,
-    credentials: true
-};
-
-server.use(helmet());
-server.use(cors(corsOptions));
+    credentials: true,
+    allowedHeaders: '*'
+}));
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+})
 server.use(express.json());
 server.use(cookieParser());
 
