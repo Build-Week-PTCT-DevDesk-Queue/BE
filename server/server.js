@@ -9,7 +9,7 @@ const ticketsRouter = require('./tickets/tickets-router')
 
 server.use(helmet());
 server.use(cors({
-    origin: 'https://dev-desk-frontend.vercel.app/',
+    origin: ['https://dev-desk-frontend.vercel.app/*']
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization'
 }));
