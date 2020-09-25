@@ -48,11 +48,6 @@ router.post('/login', validateUser, async (req, res, next) => {
         });
 
         res.cookie('token', token, {expire: 360000 + Date.now()});
-        res.header('authorization', token).send({
-            id: user.id,
-            username: user.username,
-            role: user.role
-        });
 
         res.status(200).json({
             id: user.id,
