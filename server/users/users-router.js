@@ -47,7 +47,7 @@ router.post('/login', validateUser, async (req, res, next) => {
             expiresIn: parseInt(process.env.JWT_EXPIRES_IN),
         });
 
-        res.cookie('token', token, {expire: 360000 + Date.now()});
+        res.cookie('token', token, {expire: 360000 + Date.now(), sameSite: 'none'});
 
         res.status(200).json({
             id: user.id,
