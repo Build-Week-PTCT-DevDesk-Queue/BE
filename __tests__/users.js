@@ -18,7 +18,7 @@ describe('auth route tests', () => {
         const res = await supertest(server)
             .post('/api/auth/register/')
             .send({
-                username: 'frodo',
+                username: 'sjadokdj',
                 password: 'password',
                 role: 'student'
             });
